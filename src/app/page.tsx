@@ -31,9 +31,9 @@ export default function Home() {
     const drawBackground = (currentX: number, currentY: number) => {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
-      context.fillStyle = 'white';
-      for (let x = 0; x < canvas.width; x += gap) {
-        for (let y = 0; y < canvas.height; y += gap) {
+      context.fillStyle = getComputedStyle(document.body).getPropertyValue('--foreground') || '#fff';
+      for (let x = Math.floor(size/2); x < canvas.width; x += gap) {
+        for (let y = Math.floor(size/2); y < canvas.height; y += gap) {
           let distanceToMouse = Math.sqrt(Math.pow(x - currentX, 2) + Math.pow(y - currentY, 2))
           let normalisedDistance = mapRange(distanceToMouse, 0, 300, 0, 1)
           let inverseDistance = mapRange(normalisedDistance, 0, 1, 1, 0);
@@ -43,7 +43,7 @@ export default function Home() {
           let finalSize = size * (inverseDistance ** curvePower);
           if (finalSize < 2) { finalSize = 2; }
           
-          context.fillRect(x, y, finalSize, finalSize);
+          context.fillRect(x-finalSize, y-finalSize, finalSize*2, finalSize*2);
         }
       }
     }
