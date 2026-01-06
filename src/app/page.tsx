@@ -10,63 +10,77 @@ export default function Home() {
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement | null;
     if (!canvas) return;
-
+    
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-
+    
     const context = canvas.getContext('2d');
     if (!context) return;
-
+    
     let mouseX: number = canvas.width / 2;
     let mouseY: number = canvas.height / 2;
-
+    let currentX: number = mouseX;
+    let currentY: number = mouseY;
+    
     const gap = 40;
-    const size = 10;
-    const curvePower = 1;
+    const size = 15;
+    const curvePower = 1.2;
+    const smoothingFactor = 0.1;
+    
+    
+    const drawBackground = (currentX: number, currentY: number) => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
 
-    function mapRange(value: number, sourceStart: number, sourceEnd: number, targetStart: number, targetEnd: number): number {
-      return (((value - sourceStart) / (sourceEnd - sourceStart)) * (targetEnd - targetStart) + targetStart);
-    }
-
-    const drawBackground = () => {
       context.fillStyle = 'white';
       for (let x = 0; x < canvas.width; x += gap) {
         for (let y = 0; y < canvas.height; y += gap) {
-          let distanceToMouse = Math.sqrt(Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2))
+          let distanceToMouse = Math.sqrt(Math.pow(x - currentX, 2) + Math.pow(y - currentY, 2))
           let normalisedDistance = mapRange(distanceToMouse, 0, 300, 0, 1)
           let inverseDistance = mapRange(normalisedDistance, 0, 1, 1, 0);
-
+          
           inverseDistance = Math.min(Math.max(inverseDistance, 0), 1);
-
+          
           let finalSize = size * (inverseDistance ** curvePower);
           if (finalSize < 2) { finalSize = 2; }
-
+          
           context.fillRect(x, y, finalSize, finalSize);
         }
       }
     }
-
-    const mousePosition = (event: MouseEvent) => {
-      context.reset();
-      mouseX = event.offsetX;
-      mouseY = event.offsetY;
-      drawBackground();
+    
+    function mapRange(value: number, sourceStart: number, sourceEnd: number, targetStart: number, targetEnd: number): number {
+      return (((value - sourceStart) / (sourceEnd - sourceStart)) * (targetEnd - targetStart) + targetStart);
     }
 
-    window.addEventListener('resize', () => resizeCanvas(canvas));
+    function animate() {
+      currentX += (mouseX - currentX) * smoothingFactor;
+      currentY += (mouseY - currentY) * smoothingFactor;
 
+      console.log(currentX, currentY)
+      console.log(mouseX, mouseY)
+      
+      drawBackground(currentX, currentY);
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    const mousePosition = (event: MouseEvent) => {
+      mouseX = event.offsetX;
+      mouseY = event.offsetY;
+    }
+    
     function resizeCanvas(canvas: HTMLCanvasElement) {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      drawBackground();
     }
-
-    drawBackground();
-
+    
+    const resizeHandler = () => resizeCanvas(canvas);
+    window.addEventListener('resize', resizeHandler);
     canvas.addEventListener('mousemove', (e) => {mousePosition(e)});
     return () => {
       canvas.removeEventListener('mousemove', mousePosition);
-      window.removeEventListener('resize', () => resizeCanvas);
+      window.removeEventListener('resize', resizeHandler);
     }
   }, []);
 
@@ -75,11 +89,11 @@ export default function Home() {
 
       <div id="home" className="w-screen h-screen flex rounded-b-2xl">
         <canvas ref={canvasRef} className="absolute w-full h-full"/>
-        <div className="w-1/3 h-1/5 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl">
+        <div className="w-1/3 h-1/5 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
           <h1 className="text-6xl font-bold min-h-12">
             <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
           </h1>
-          <div className="flex w-full text-6xl gap-2">
+          <div className="flex w-full text-6xl gap-2 pointer-events-auto">
             <IconLink url="https://github.com/ogd311">
               <FaGithub />
             </IconLink>
