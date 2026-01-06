@@ -25,7 +25,7 @@ export default function Home() {
     const gap = 40;
     const size = 15;
     const curvePower = 1.2;
-    const smoothingFactor = 0.1;
+    const smoothingFactor = 0.3;
     
     
     const drawBackground = (currentX: number, currentY: number) => {
@@ -52,15 +52,22 @@ export default function Home() {
       return (((value - sourceStart) / (sourceEnd - sourceStart)) * (targetEnd - targetStart) + targetStart);
     }
 
+    let frameId: number | null = null;
+    let lastTime: number | null = null;
+
     function animate() {
-      currentX += (mouseX - currentX) * smoothingFactor;
-      currentY += (mouseY - currentY) * smoothingFactor;
+      const now = performance.now();
+      const deltaTime = frameId ? (now - (lastTime ?? now)) / 16.67 : 1;
+
+      lastTime = now;
+      currentX += (mouseX - currentX) * (1 - Math.pow(1 - smoothingFactor, deltaTime));
+      currentY += (mouseY - currentY) * (1 - Math.pow(1 - smoothingFactor, deltaTime));
 
       console.log(currentX, currentY)
       console.log(mouseX, mouseY)
       
       drawBackground(currentX, currentY);
-      requestAnimationFrame(animate);
+      frameId = requestAnimationFrame(animate);
     }
 
     animate();
@@ -81,6 +88,7 @@ export default function Home() {
     return () => {
       canvas.removeEventListener('mousemove', mousePosition);
       window.removeEventListener('resize', resizeHandler);
+      if (frameId) { cancelAnimationFrame(frameId) };
     }
   }, []);
 
