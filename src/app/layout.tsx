@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lilex } from "next/font/google";
 import "./globals.css";
+import DarkLightToggle from "@/components/DarkLightToggle";
 
 const lilexSans = Lilex({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${lilexSans.className} antialiased`}
       >
+        <DarkLightToggle />
         {children}
       </body>
     </html>
