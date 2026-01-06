@@ -1,0 +1,312 @@
+{
+  "data": {
+    "user": {
+      "repositories": {
+        "nodes": [
+          {
+            "name": "durhack2025",
+            "description": null,
+            "url": "https://github.com/thejmfc/durhack2025",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "updatedAt": "2025-11-02T11:52:56Z",
+            "pushedAt": "2025-11-02T11:52:52Z",
+            "languages": {
+              "totalSize": 187545,
+              "edges": [
+                {
+                  "size": 186961,
+                  "node": {
+                    "name": "TypeScript"
+                  }
+                },
+                {
+                  "size": 559,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 25,
+                  "node": {
+                    "name": "CSS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "uk.co.ogoodwinday_nextjs",
+            "description": "New and improved personal portfolio, written in NextJS w/ Tailwind",
+            "url": "https://github.com/OGD311/uk.co.ogoodwinday_nextjs",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-12-06T13:33:56Z",
+            "pushedAt": "2025-12-06T13:34:00Z",
+            "languages": {
+              "totalSize": 24224,
+              "edges": [
+                {
+                  "size": 22894,
+                  "node": {
+                    "name": "TypeScript"
+                  }
+                },
+                {
+                  "size": 725,
+                  "node": {
+                    "name": "CSS"
+                  }
+                },
+                {
+                  "size": 605,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "website_v4",
+            "description": "SLUGSOC website, written in Astro",
+            "url": "https://github.com/SLUGSoc/website_v4",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-11-12T16:56:38Z",
+            "pushedAt": "2025-11-12T16:56:33Z",
+            "languages": {
+              "totalSize": 30927,
+              "edges": [
+                {
+                  "size": 19241,
+                  "node": {
+                    "name": "Astro"
+                  }
+                },
+                {
+                  "size": 9743,
+                  "node": {
+                    "name": "TypeScript"
+                  }
+                },
+                {
+                  "size": 1398,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 545,
+                  "node": {
+                    "name": "CSS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "apiT",
+            "description": "A program that dynamically generates a read-only REST API from spreadsheets, simplifying the process of creating consumable APIs",
+            "url": "https://github.com/OGD311/apiT",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-09-15T10:58:13Z",
+            "pushedAt": "2025-09-12T22:41:33Z",
+            "languages": {
+              "totalSize": 4397,
+              "edges": [
+                {
+                  "size": 4397,
+                  "node": {
+                    "name": "Python"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "ratemysociety",
+            "description": null,
+            "url": "https://github.com/OGD311/ratemysociety",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-10-09T13:37:46Z",
+            "pushedAt": "2025-09-01T19:38:36Z",
+            "languages": {
+              "totalSize": 63948,
+              "edges": [
+                {
+                  "size": 63452,
+                  "node": {
+                    "name": "TypeScript"
+                  }
+                },
+                {
+                  "size": 474,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 22,
+                  "node": {
+                    "name": "CSS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "concalendar-frontend",
+            "description": null,
+            "url": "https://github.com/OGD311/concalendar-frontend",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-10-09T13:37:46Z",
+            "pushedAt": "2025-08-01T21:05:41Z",
+            "languages": {
+              "totalSize": 22105,
+              "edges": [
+                {
+                  "size": 21074,
+                  "node": {
+                    "name": "TypeScript"
+                  }
+                },
+                {
+                  "size": 973,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 58,
+                  "node": {
+                    "name": "CSS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "Conways-Game-of-Life",
+            "description": "A simple python pygame implementation of Conway's Game of Life",
+            "url": "https://github.com/OGD311/Conways-Game-of-Life",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "updatedAt": "2025-06-01T18:58:39Z",
+            "pushedAt": "2025-06-01T18:58:35Z",
+            "languages": {
+              "totalSize": 4026,
+              "edges": [
+                {
+                  "size": 4026,
+                  "node": {
+                    "name": "Python"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "Oggle",
+            "description": null,
+            "url": "https://github.com/OGD311/Oggle",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "updatedAt": "2025-05-12T23:37:08Z",
+            "pushedAt": "2025-05-12T23:37:05Z",
+            "languages": {
+              "totalSize": 3521,
+              "edges": [
+                {
+                  "size": 1404,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 1378,
+                  "node": {
+                    "name": "Go"
+                  }
+                },
+                {
+                  "size": 446,
+                  "node": {
+                    "name": "HTML"
+                  }
+                },
+                {
+                  "size": 293,
+                  "node": {
+                    "name": "CSS"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "WikiLinks",
+            "description": null,
+            "url": "https://github.com/OGD311/WikiLinks",
+            "stargazerCount": 1,
+            "forkCount": 0,
+            "updatedAt": "2025-05-11T13:52:49Z",
+            "pushedAt": "2025-05-11T13:52:46Z",
+            "languages": {
+              "totalSize": 13548,
+              "edges": [
+                {
+                  "size": 13548,
+                  "node": {
+                    "name": "Python"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "Magi",
+            "description": null,
+            "url": "https://github.com/OGD311/Magi",
+            "stargazerCount": 0,
+            "forkCount": 0,
+            "updatedAt": "2025-02-20T16:22:29Z",
+            "pushedAt": "2025-02-20T16:22:26Z",
+            "languages": {
+              "totalSize": 9421,
+              "edges": [
+                {
+                  "size": 3433,
+                  "node": {
+                    "name": "Python"
+                  }
+                },
+                {
+                  "size": 2886,
+                  "node": {
+                    "name": "JavaScript"
+                  }
+                },
+                {
+                  "size": 2195,
+                  "node": {
+                    "name": "CSS"
+                  }
+                },
+                {
+                  "size": 907,
+                  "node": {
+                    "name": "HTML"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
