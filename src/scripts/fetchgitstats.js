@@ -41,6 +41,7 @@ if (!result.ok) {
   console.log(result);
 } else {
   const data = await result.json();
+  data.dateBuilt = new Date().toISOString();
   await writeFile("public/gitstats.json", JSON.stringify(data, null, 2));
   console.log("gitstats.json successfully written!")
 }
