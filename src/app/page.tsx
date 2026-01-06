@@ -1,6 +1,6 @@
 "use client"
 import IconLink from "@/components/IconLink";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaGit, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Fa42Group } from "react-icons/fa6";
@@ -94,6 +94,45 @@ export default function Home() {
     }
   }, []);
 
+
+  const [loading, setLoading] = useState(false);
+  const [isLiveSource, setIsLiveSource] = useState(false);
+  const [error, setError] = useState("");
+  type GitStats = {
+    data: {
+      [key: string]: any;
+    };
+    dateBuilt?: string;
+  } | null;
+
+  const [gitStats, setGitStats] = useState<GitStats>(null);
+
+  useEffect(() => {
+    async function loadGitStats() {
+      try {
+        setLoading(true);
+
+        let response = await fetch("/api/gitstats");
+        
+        if (response.ok) {
+          setGitStats(await response.json());
+          setIsLiveSource(true);
+        } else {
+          let response = await fetch("/gitstats.json");
+          setGitStats(await response.json());
+          setIsLiveSource(false);
+        }
+      } catch {
+        setError("No projects could be loaded")
+      } finally {
+        setLoading(false);
+      }
+        
+    }
+
+    loadGitStats();
+  }, [])
+
   return (
     <main className="w-full h-full text-foreground bg-background">
 
@@ -116,9 +155,15 @@ export default function Home() {
       </div>
 
       <div id="projects" className="w-screen h-screen flex">
-        <div className="w-full h-full flex justify-center">
+        <div className="w-full h-full flex flex-col justify-center bg-blue-300">
 
-        
+          <div>
+            {!loading && isLiveSource ? (
+              <h3>Live</h3>
+            ) : (
+              <h3>Last Updated: {gitStats?.dateBuilt ? new Date(gitStats.dateBuilt).toLocaleDateString() : new Date().toLocaleDateString()}</h3>
+            )}
+          </div>
 
 
         </div>
