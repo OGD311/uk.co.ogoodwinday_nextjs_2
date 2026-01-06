@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node src/scripts/fetchgitstats && next dev",
+    "dev": "next dev",
     "build": "node src/scripts/fetchgitstats && next build",
     "start": "next start",
     "lint": "eslint"
