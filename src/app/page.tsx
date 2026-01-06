@@ -17,20 +17,57 @@ export default function Home() {
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    let gap = 40;
-    let size = 1;
+    let mouseX: number = canvas.width / 2;
+    let mouseY: number = canvas.height / 2;
+
+    const gap = 40;
+    const size = 10;
+    const curvePower = 1;
+
+    function mapRange(value: number, sourceStart: number, sourceEnd: number, targetStart: number, targetEnd: number): number {
+      return (((value - sourceStart) / (sourceEnd - sourceStart)) * (targetEnd - targetStart) + targetStart);
+    }
 
     const drawBackground = () => {
+      context.fillStyle = 'white';
       for (let x = 0; x < canvas.width; x += gap) {
         for (let y = 0; y < canvas.height; y += gap) {
-          context.fillStyle = 'white';
-          context.fillRect(x, y, size, size);
+          let distanceToMouse = Math.sqrt(Math.pow(x - mouseX, 2) + Math.pow(y - mouseY, 2))
+          let normalisedDistance = mapRange(distanceToMouse, 0, 300, 0, 1)
+          let inverseDistance = mapRange(normalisedDistance, 0, 1, 1, 0);
+
+          inverseDistance = Math.min(Math.max(inverseDistance, 0), 1);
+
+          let finalSize = size * (inverseDistance ** curvePower);
+          if (finalSize < 2) { finalSize = 2; }
+
+          context.fillRect(x, y, finalSize, finalSize);
         }
       }
     }
 
+    const mousePosition = (event: MouseEvent) => {
+      context.reset();
+      mouseX = event.offsetX;
+      mouseY = event.offsetY;
+      drawBackground();
+    }
+
+    window.addEventListener('resize', () => resizeCanvas(canvas));
+
+    function resizeCanvas(canvas: HTMLCanvasElement) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawBackground();
+    }
+
     drawBackground();
 
+    canvas.addEventListener('mousemove', (e) => {mousePosition(e)});
+    return () => {
+      canvas.removeEventListener('mousemove', mousePosition);
+      window.removeEventListener('resize', () => resizeCanvas);
+    }
   }, []);
 
   return (
