@@ -18,7 +18,7 @@ export default function DarkLightToggle(){
     return (
         <button 
         onClick={() => { setDarkMode(!darkMode); }}
-        className="cursor-pointer border z-50 fixed top-3 right-8 bg-hover p-2 rounded-full">
+        className="cursor-pointer border z-50 fixed top-3 right-8 bg-hover p-2 bg-background rounded-full">
             <IoSunny className={`w-8 h-8 ${darkMode ? '' : 'hidden'}`} />
             <IoMoon className={`w-8 h-8 ${darkMode ? 'hidden' : ''}`} />
         </button>
