@@ -1,7 +1,9 @@
 "use client"
 import IconLink from "@/components/IconLink";
 import { useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Marquee from "react-fast-marquee";
+import { FaGit, FaGithub, FaLinkedin } from "react-icons/fa";
+import { Fa42Group } from "react-icons/fa6";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
@@ -110,6 +112,15 @@ export default function Home() {
               <FaLinkedin />
             </IconLink>
           </div>
+        </div>
+      </div>
+
+      <div id="projects" className="w-screen h-screen flex">
+        <div className="w-full h-full flex justify-center">
+
+        
+
+
         </div>
       </div>
 
