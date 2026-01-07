@@ -1,11 +1,11 @@
 "use client"
+import ChessLoader from "@/components/ChessLoader";
 import IconLink from "@/components/IconLink";
 import ProjectCard from "@/components/ProjectCard";
 import SectionPopout from "@/components/SectionPopout";
 import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
-import Marquee from "react-fast-marquee";
-import { FaCheese, FaChessBishop, FaChessKing, FaChessKnight, FaChessPawn, FaChessQueen, FaChessRook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
@@ -120,7 +120,7 @@ export default function Home() {
       } catch {
         setError("No projects could be loaded")
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
         
     }
@@ -168,12 +168,13 @@ export default function Home() {
           </div>
           
             {loading && 
-            <div className="w-full min-h-128 flex justify-center items-center">
+            <div className="w-full min-h-128 h-full flex">
+              <ChessLoader />
             </div>}
             {!loading && 
             <div className="relative h-full my-5 flex flex-col gap-5">
               <div
-                className="flex animate-marquee whitespace-nowrap pt-5 gap-2"
+                className="flex whitespace-nowrap pt-5 gap-2"
                 style={{
                   animation: "marquee 30s linear infinite",
                 }}
@@ -192,7 +193,7 @@ export default function Home() {
                 ))}
               </div>
               <div
-                className="flex animate-marquee whitespace-nowrap pt-5 gap-2"
+                className="flex whitespace-nowrap pt-5 gap-2"
                 style={{
                   animation: "marquee 30s linear infinite reverse",
                 }}
