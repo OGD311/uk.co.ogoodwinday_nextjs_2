@@ -27,7 +27,7 @@ export default function ProjectCard({ project } : { project: repository }) {
                     </div>
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-5">
                     <span>
                         Created {Math.round(Math.abs((+today - +(new Date(project.pushedAt))) / day))} Days Ago
                     </span>
