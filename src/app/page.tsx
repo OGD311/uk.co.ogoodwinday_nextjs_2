@@ -7,6 +7,7 @@ import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import { links } from "../../public/links";
 
 export default function Home() {
   const canvasRef = useRef(null);
@@ -139,11 +140,11 @@ export default function Home() {
             <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
           </h1>
           <div className="flex w-full text-6xl gap-2 pointer-events-auto">
-            <IconLink url="https://github.com/ogd311">
+            <IconLink url={links.github}>
               <FaGithub />
             </IconLink>
 
-            <IconLink url="https://github.com/ogd311">
+            <IconLink url={links.linkedin}>
               <FaLinkedin />
             </IconLink>
           </div>
