@@ -10,7 +10,7 @@ export default function ProjectCard({ project } : { project: repository }) {
     const today = new Date()
 
     return (
-        <Link href={project.url} className="hover:-translate-y-5 transition-all duration-150">
+        <Link href={project.url} target="_blank" className="hover:-translate-y-5 transition-all duration-150">
             <div className="w-full border px-5 py-2 min-h-64 min-w-fit rounded-xl mb-2 relative">
                 <div className="mb-2 pr-40 relative">
                     <h3 className="text-3xl">{project.name}</h3> 
