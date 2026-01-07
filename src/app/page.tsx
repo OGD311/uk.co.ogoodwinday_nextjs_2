@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { links } from "../../public/links";
+import Image from "next/image";
 
 export default function Home() {
   const canvasRef = useRef(null);
@@ -67,9 +68,6 @@ export default function Home() {
       lastTime = now;
       currentX += (mouseX - currentX) * (1 - Math.pow(1 - smoothingFactor, deltaTime));
       currentY += (mouseY - currentY) * (1 - Math.pow(1 - smoothingFactor, deltaTime));
-
-      console.log(currentX, currentY)
-      console.log(mouseX, mouseY)
       
       drawBackground(currentX, currentY);
       frameId = requestAnimationFrame(animate);
@@ -135,10 +133,14 @@ export default function Home() {
 
       <div id="home" className="w-screen h-screen flex rounded-b-2xl">
         <canvas ref={canvasRef} className="absolute w-full h-full"/>
-        <div className="w-3/10 h-1/5 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
-          <h1 className="text-6xl font-bold min-h-12">
-            <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
+        <div className="w-4/11 h-1/3 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
+          <h1 className="text-8xl font-bold">
+            Oliver GD
           </h1>
+          
+          <h2 className="text-6xl font-semibold min-h-12">
+            <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
+          </h2>
           <div className="flex w-full text-6xl gap-2 pointer-events-auto">
             <IconLink url={links.github}>
               <FaGithub />
@@ -148,6 +150,18 @@ export default function Home() {
               <FaLinkedin />
             </IconLink>
           </div>
+        </div>
+
+        <div className="w-1/3 h-fit justify-between self-center ml-auto mr-25 flex flex-col p-2 backdrop-blur-sm rounded-xl pointer-events-none">
+          <Image
+            src={"/me.png"}
+            quality={100}
+            alt="Not me"
+            width={300}
+            height={300}
+            preload
+            className="w-full h-full p-2 rounded-xl"
+          />
         </div>
       </div>
 
