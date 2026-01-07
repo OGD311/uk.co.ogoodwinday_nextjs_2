@@ -176,7 +176,7 @@ export default function Home() {
               <div
                 className="flex whitespace-nowrap pt-5 gap-2"
                 style={{
-                  animation: "marquee 30s linear infinite",
+                  animation: "marquee 45s linear infinite",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget.style.animationPlayState = "paused");
@@ -195,7 +195,7 @@ export default function Home() {
               <div
                 className="flex whitespace-nowrap pt-5 gap-2"
                 style={{
-                  animation: "marquee 30s linear infinite reverse",
+                  animation: "marquee 45s linear infinite reverse",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget.style.animationPlayState = "paused");
