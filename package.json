@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node src/scripts/fetchgitstats && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prebuild": "node src/scripts/fetchgitstats"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
