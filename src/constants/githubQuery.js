@@ -1,7 +1,7 @@
 export const query = `
         query {
         user(login: "OGD311") {
-            repositories(first: 10, orderBy: {field: CREATED_AT, direction: DESC}) {
+            repositories(first: 20, orderBy: {field: CREATED_AT, direction: DESC}) {
                 nodes {
                     name
                     description
