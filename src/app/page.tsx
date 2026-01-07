@@ -135,7 +135,7 @@ export default function Home() {
 
       <div id="home" className="w-screen h-screen flex rounded-b-2xl">
         <canvas ref={canvasRef} className="absolute w-full h-full"/>
-        <div className="w-1/3 h-1/5 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
+        <div className="w-3/10 h-1/5 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
           <h1 className="text-6xl font-bold min-h-12">
             <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
           </h1>
