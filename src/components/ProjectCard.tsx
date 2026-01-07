@@ -63,15 +63,14 @@ export default function ProjectCard({ project } : { project: repository }) {
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-3 w-full h-full justify-between">
+                    <div className="flex flex-wrap gap-x-4 w-full h-full mt-2">
                         {project.languages.edges.map((language, idx) => (
-                            <div key={idx} className="mr-auto text-md flex items-center">
+                            <div key={idx} className="text-md flex items-center mr-4">
                                 <div 
                                     className="mr-2 w-2 h-2 rounded-full" 
                                     style={{ backgroundColor: languageColors[language.node.name] ? languageColors[language.node.name] : "#333"}}>
                                 </div>
                                 {language.node.name}
-
                                 <span className="text-sm text-gray-400 ml-1">
                                     {((language.size / project.languages.totalSize) * 100) > 10 ? ((language.size / project.languages.totalSize) * 100).toFixed(0) : ((language.size / project.languages.totalSize) * 100).toFixed(1)}%
                                 </span>    
