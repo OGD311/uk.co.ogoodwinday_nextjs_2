@@ -120,7 +120,7 @@ export default function Home() {
       } catch {
         setError("No projects could be loaded")
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
         
     }
