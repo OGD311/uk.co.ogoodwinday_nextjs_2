@@ -17,7 +17,7 @@ export default function ProjectCard({ project } : { project: repository }) {
                     <span className="opacity-70">
                         {project.description ? (project.description).slice(0, 45) + "..." : ''}
                     </span>    
-                    <div className="flex gap-5 absolute right-0 top-0">
+                    <div className="flex gap-5 absolute right-0 top-2">
                         <span className="flex items-center gap-2">
                             {project.stargazerCount} <FaStar className="text-amber-300" />
                         </span>
