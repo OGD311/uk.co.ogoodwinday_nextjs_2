@@ -5,7 +5,7 @@ import SectionPopout from "@/components/SectionPopout";
 import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaCheese, FaChessBishop, FaChessKing, FaChessKnight, FaChessPawn, FaChessQueen, FaChessRook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
@@ -150,26 +150,32 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="projects" className="w-screen h-fit flex">
+      <div id="projects" className="w-screen h-fit flex overflow-clip">
         <div className="w-full h-full flex flex-col justify-center items-baseline bg-blue-700">
           <div className="flex w-full justify-center mt-5">
             <h2 className="text-center text-5xl">Projects</h2>
-            {!loading && isLiveSource ? (
+            {loading ? (
+              <h3 className="text-center">Loading</h3>
+            ) : isLiveSource ? (
               <h3 className="text-center">Live</h3>
             ) : (
-                <h3 className="text-center">
+              <h3 className="text-center">
                 {gitStats?.dateBuilt
                   ? new Date(gitStats.dateBuilt).toLocaleString('default', { month: 'short', year: '2-digit' })
                   : new Date().toLocaleString('default', { month: 'short', year: '2-digit' })}
-                </h3>
+              </h3>
             )}
           </div>
           
-            <div className="relative overflow-hidden h-full my-5 flex flex-col gap-5">
+            {loading && 
+            <div className="w-full min-h-128 flex justify-center items-center">
+            </div>}
+            {!loading && 
+            <div className="relative h-full my-5 flex flex-col gap-5">
               <div
-                className="flex animate-marquee whitespace-nowrap pt-5 gap-2 overflow-hidden"
+                className="flex animate-marquee whitespace-nowrap pt-5 gap-2"
                 style={{
-                  animation: "marquee 60s linear infinite",
+                  animation: "marquee 30s linear infinite",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget.style.animationPlayState = "paused");
@@ -186,9 +192,9 @@ export default function Home() {
                 ))}
               </div>
               <div
-                className="flex animate-marquee whitespace-nowrap pt-5 gap-2 overflow-hidden"
+                className="flex animate-marquee whitespace-nowrap pt-5 gap-2"
                 style={{
-                  animation: "marquee 60s linear infinite reverse",
+                  animation: "marquee 30s linear infinite reverse",
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget.style.animationPlayState = "paused");
@@ -205,6 +211,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
+            }
 
 
         </div>
