@@ -149,9 +149,9 @@ export default function Home() {
       </div>
 
       <div id="projects" className="w-screen h-screen flex">
-        <div className="w-full h-full flex flex-col justify-center bg-blue-300">
+        <div className="w-full h-full flex flex-col justify-center items-baseline bg-blue-700">
 
-          <div>
+          <div className="flex">
             {!loading && isLiveSource ? (
               <h3>Live</h3>
             ) : (
@@ -159,7 +159,7 @@ export default function Home() {
             )}
           </div>
           
-            <div className="relative overflow-x-hidden h-1/2 flex items-center">
+            <div className="relative overflow-x-hidden h-full pt-5 flex flex-col gap-10">
               <div
                 className="flex animate-marquee whitespace-nowrap gap-2"
                 style={{
@@ -172,10 +172,29 @@ export default function Home() {
                   (e.currentTarget.style.animationPlayState = "running");
                 }}
               >
-                {gitStats?.data.user.repositories.nodes.map((repo, idx) => (
+                {gitStats?.data.user.repositories.nodes.slice(0, 10).map((repo, idx) => (
                   <ProjectCard key={idx} project={repo} />
                 ))}
-                {gitStats?.data.user.repositories.nodes.map((repo, idx) => (
+                {gitStats?.data.user.repositories.nodes.slice(0, 10).map((repo, idx) => (
+                  <ProjectCard key={`dup-${idx}`} project={repo} />
+                ))}
+              </div>
+              <div
+                className="flex animate-marquee whitespace-nowrap gap-2"
+                style={{
+                  animation: "marquee 60s linear infinite reverse",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget.style.animationPlayState = "paused");
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget.style.animationPlayState = "running");
+                }}
+              >
+                {gitStats?.data.user.repositories.nodes.slice(11).map((repo, idx) => (
+                  <ProjectCard key={idx} project={repo} />
+                ))}
+                {gitStats?.data.user.repositories.nodes.slice(11).map((repo, idx) => (
                   <ProjectCard key={`dup-${idx}`} project={repo} />
                 ))}
               </div>
