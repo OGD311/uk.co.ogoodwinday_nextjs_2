@@ -54,8 +54,9 @@ export default function ProjectCard({ project } : { project: repository }) {
                 <div className="flex w-full flex-col mt-5">
 
                     <div className="flex w-full h-5 bg-gray-700 rounded-xl overflow-hidden">
-                        {project.languages.edges.map(language => (
-                            <span 
+                        {project.languages.edges.map((language, idx) => (
+                            <span
+                                key={idx} 
                                 style={{ width: ((language.size / project.languages.totalSize) * 100).toFixed(1) + "%", backgroundColor: languageColors[language.node.name] ? languageColors[language.node.name] : "#333" }}
                                 className="h-5 not-last:mr-px">
                             </span>
@@ -63,8 +64,8 @@ export default function ProjectCard({ project } : { project: repository }) {
                     </div>
 
                     <div className="grid grid-cols-3 w-full h-full justify-between">
-                        {project.languages.edges.map(language => (
-                            <div className="mr-auto text-md flex items-center">
+                        {project.languages.edges.map((language, idx) => (
+                            <div key={idx} className="mr-auto text-md flex items-center">
                                 <div 
                                     className="mr-2 w-2 h-2 rounded-full" 
                                     style={{ backgroundColor: languageColors[language.node.name] ? languageColors[language.node.name] : "#333"}}>
