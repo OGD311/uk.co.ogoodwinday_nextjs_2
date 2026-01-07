@@ -34,3 +34,15 @@ body {
     transform: translateX(-50%);
   }
 }
+
+
+/* Hide Scrollbars */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
