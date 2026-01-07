@@ -1,9 +1,10 @@
 "use client"
 import IconLink from "@/components/IconLink";
+import ProjectCard from "@/components/ProjectCard";
+import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
-import { FaGit, FaGithub, FaLinkedin } from "react-icons/fa";
-import { Fa42Group } from "react-icons/fa6";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function Home() {
@@ -98,14 +99,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [isLiveSource, setIsLiveSource] = useState(false);
   const [error, setError] = useState("");
-  type GitStats = {
-    data: {
-      [key: string]: any;
-    };
-    dateBuilt?: string;
-  } | null;
-
-  const [gitStats, setGitStats] = useState<GitStats>(null);
+  const [gitStats, setGitStats] = useState<GitStats>();
 
   useEffect(() => {
     async function loadGitStats() {
@@ -164,6 +158,28 @@ export default function Home() {
               <h3>Last Updated: {gitStats?.dateBuilt ? new Date(gitStats.dateBuilt).toLocaleDateString() : new Date().toLocaleDateString()}</h3>
             )}
           </div>
+          
+            <div className="relative overflow-x-hidden h-1/2 flex items-center">
+              <div
+                className="flex animate-marquee whitespace-nowrap gap-2"
+                style={{
+                  animation: "marquee 60s linear infinite",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget.style.animationPlayState = "paused");
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget.style.animationPlayState = "running");
+                }}
+              >
+                {gitStats?.data.user.repositories.nodes.map((repo, idx) => (
+                  <ProjectCard key={idx} project={repo} />
+                ))}
+                {gitStats?.data.user.repositories.nodes.map((repo, idx) => (
+                  <ProjectCard key={`dup-${idx}`} project={repo} />
+                ))}
+              </div>
+            </div>
 
 
         </div>
