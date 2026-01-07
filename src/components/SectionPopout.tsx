@@ -8,7 +8,7 @@ export default function SectionPopout({ sections } : { sections: string[] }) {
 
     return (
         <>
-            <div className={`${isOut ? '' : 'hidden'} text-right fixed bottom-15 right-8 flex flex-col z-50 backdrop-blur-sm rounded-xl px-2 py-1 border border-white`}>
+            <div className={`${isOut ? '' : 'hidden'} text-right text-3xl fixed bottom-20 right-8 flex flex-col z-50 backdrop-blur-sm rounded-xl px-2 py-1 border border-white`}>
                 {sections.map((section, idx) => (
                     <Link href={`#${section}`} key={idx}>{section.slice(0,1).toUpperCase()}{section.slice(1)}</Link>
                 ))}
@@ -18,9 +18,9 @@ export default function SectionPopout({ sections } : { sections: string[] }) {
                 className="cursor-pointer fixed bottom-3 right-8 bg-black p-3 rounded-2xl z-50 border border-white"
                 >
                 {isOut ? (
-                    <MdClose />
+                    <MdClose className="w-8 h-8" />
                 ) : (
-                    <MdTableRows />
+                    <MdTableRows className="w-8 h-8" />
                 )}
             </button>
         </>
