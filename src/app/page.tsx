@@ -1,6 +1,7 @@
 "use client"
 import IconLink from "@/components/IconLink";
 import ProjectCard from "@/components/ProjectCard";
+import SectionPopout from "@/components/SectionPopout";
 import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -129,6 +130,7 @@ export default function Home() {
 
   return (
     <main className="w-full h-full text-foreground bg-background">
+      <SectionPopout sections={["home", "projects", "experience"]} />
 
       <div id="home" className="w-screen h-screen flex rounded-b-2xl">
         <canvas ref={canvasRef} className="absolute w-full h-full"/>
@@ -148,20 +150,24 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="projects" className="w-screen h-screen flex">
+      <div id="projects" className="w-screen h-fit flex">
         <div className="w-full h-full flex flex-col justify-center items-baseline bg-blue-700">
-
-          <div className="flex">
+          <div className="flex w-full justify-center mt-5">
+            <h2 className="text-center text-5xl">Projects</h2>
             {!loading && isLiveSource ? (
-              <h3>Live</h3>
+              <h3 className="text-center">Live</h3>
             ) : (
-              <h3>Last Updated: {gitStats?.dateBuilt ? new Date(gitStats.dateBuilt).toLocaleDateString() : new Date().toLocaleDateString()}</h3>
+                <h3 className="text-center">
+                {gitStats?.dateBuilt
+                  ? new Date(gitStats.dateBuilt).toLocaleString('default', { month: 'short', year: '2-digit' })
+                  : new Date().toLocaleString('default', { month: 'short', year: '2-digit' })}
+                </h3>
             )}
           </div>
           
-            <div className="relative overflow-x-hidden h-full pt-5 flex flex-col gap-10">
+            <div className="relative overflow-hidden h-full my-5 flex flex-col gap-5">
               <div
-                className="flex animate-marquee whitespace-nowrap gap-2"
+                className="flex animate-marquee whitespace-nowrap pt-5 gap-2 overflow-hidden"
                 style={{
                   animation: "marquee 60s linear infinite",
                 }}
@@ -180,7 +186,7 @@ export default function Home() {
                 ))}
               </div>
               <div
-                className="flex animate-marquee whitespace-nowrap gap-2"
+                className="flex animate-marquee whitespace-nowrap pt-5 gap-2 overflow-hidden"
                 style={{
                   animation: "marquee 60s linear infinite reverse",
                 }}
@@ -202,6 +208,13 @@ export default function Home() {
 
 
         </div>
+      </div>
+
+      <div id="experience" className="w-screen h-screen flex">
+        <div className="w-full h-full bg-green-500">
+
+        </div>
+
       </div>
 
     </main>
