@@ -10,22 +10,21 @@ export default function ProjectCard({ project } : { project: repository }) {
     const today = new Date()
 
     return (
-        <Link href={project.url} className="hover:-translate-y-5">
-            <div className="w-full border px-5 py-2 min-h-64 rounded-xl mb-2 relative">
-                <div className="mb-2">
+        <Link href={project.url} className="hover:-translate-y-5 transition-all duration-150">
+            <div className="w-full border px-5 py-2 min-h-64 min-w-fit rounded-xl mb-2 relative">
+                <div className="mb-2 pr-40 relative">
                     <h3 className="text-3xl">{project.name}</h3> 
                     <span className="opacity-70">
-                        {project.description ? (project.description).slice(0, 30) + "..." : ''}
+                        {project.description ? (project.description).slice(0, 45) + "..." : ''}
                     </span>    
-                </div>
-                
-                <div className="flex gap-5 absolute right-5 top-3">
-                    <span className="flex items-center gap-2">
-                        {project.stargazerCount} <FaStar className="text-amber-300" />
-                    </span>
-                    <span className="flex items-center gap-2">
-                        {project.forkCount} <FaCodeFork />
-                    </span>
+                    <div className="flex gap-5 absolute right-0 top-0">
+                        <span className="flex items-center gap-2">
+                            {project.stargazerCount} <FaStar className="text-amber-300" />
+                        </span>
+                        <span className="flex items-center gap-2">
+                            {project.forkCount} <FaCodeFork />
+                        </span>
+                    </div>
                 </div>
 
                 <div className="flex justify-between">
