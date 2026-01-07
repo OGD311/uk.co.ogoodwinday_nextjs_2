@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { query } from "@/constants/githubQuery"
 
 export async function GET() {
