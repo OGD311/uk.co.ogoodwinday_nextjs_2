@@ -5,10 +5,11 @@ import ProjectCard from "@/components/ProjectCard";
 import SectionPopout from "@/components/SectionPopout";
 import { GitStats } from "@/types/gitstats";
 import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import { links } from "../../public/links";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const canvasRef = useRef(null);
@@ -129,6 +130,14 @@ export default function Home() {
 
   return (
     <main className="w-full h-full text-foreground bg-background">
+      <div className="w-full h-fit bg-blue-700 z-20 fixed py-3 flex gap-2 items-center justify-center">
+        <FaArrowRight />
+        <Link href={"https://v3.ogoodwinday.co.uk"} className="hover:underline">
+          This site is a Work-In-Progress, view my previous here 
+        </Link>
+        <FaArrowLeft />
+      </div>
+
       <SectionPopout sections={["home", "projects", "experience"]} />
 
       <div id="home" className="w-screen h-screen flex rounded-b-2xl">
@@ -229,16 +238,28 @@ export default function Home() {
             </div>
             }
 
-
         </div>
       </div>
 
-      <div id="experience" className="w-screen h-screen flex">
-        <div className="w-full h-full bg-green-500">
+      {/* <div id="experience" className="w-screen h-screen flex">
+        <div className="w-full h-full bg-green-500 grid grid-rows-6 grid-cols-6 p-4">
+
+            {[1, 2, 3, 4, 5, 6].map((val, idx) => (
+              <>
+                  {Array(val-1).fill(null).map((_, i) => (
+                    <div key={i}>&nbsp;</div>
+                  ))}
+                  <div key={idx} className="border w-full h-full bg-blue-500 flex rounded-xl">
+                    eee
+                  </div>
+                  {Array(6-val).fill(null).map((_, i) => (
+                    <div key={i}>&nbsp;</div>
+                  ))}
+                </>
+            ))}
 
         </div>
-
-      </div>
+      </div> */}
 
     </main>
   );
