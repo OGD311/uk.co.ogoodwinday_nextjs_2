@@ -196,7 +196,7 @@ export default function Home() {
               <ChessLoader />
             </div>}
             {!loading && 
-            <div className="relative h-full my-5 flex flex-col gap-5">
+            <div className="relative h-full my-5 flex flex-col gap-5 max-md:gap-2">
               <div
                 className="flex whitespace-nowrap pt-5 gap-2"
                 style={{
