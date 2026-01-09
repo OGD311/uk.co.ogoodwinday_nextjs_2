@@ -132,7 +132,7 @@ export default function Home() {
     <main className="w-full h-full text-foreground bg-background">
       <div className="w-full h-fit bg-blue-700 z-20 fixed py-3 flex gap-2 items-center justify-center">
         <FaArrowRight />
-        <Link href={"https://v3.ogoodwinday.co.uk"} className="hover:underline">
+        <Link href={"https://v3.ogoodwinday.co.uk"} className="hover:underline max-md:text-center">
           This site is a Work-In-Progress, view my previous here 
         </Link>
         <FaArrowLeft />
@@ -140,17 +140,17 @@ export default function Home() {
 
       <SectionPopout sections={["home", "projects", "experience"]} />
 
-      <div id="home" className="w-screen h-screen flex rounded-b-2xl">
+      <div id="home" className="w-screen h-screen flex max-md:flex-col items-center rounded-b-2xl">
         <canvas ref={canvasRef} className="absolute w-full h-full"/>
-        <div className="w-4/11 h-1/3 justify-between self-center ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
-          <h1 className="text-8xl font-bold">
+        <div className="w-4/11 max-md:w-2/3 h-1/3 max-md:mt-30 max-md:items-center justify-between min-md:ml-20 flex flex-col px-2 py-2 backdrop-blur-sm rounded-xl pointer-events-none">
+          <h1 className="text-8xl max-md:text-6xl max-md:text-center font-bold">
             Oliver GD
           </h1>
           
-          <h2 className="text-6xl font-semibold min-h-12">
+          <h2 className="text-6xl max-md:text-4xl font-semibold min-h-12">
             <Typewriter words={["Student", "Developer", "Entrepreneur"]} loop />
           </h2>
-          <div className="flex w-full text-6xl gap-2 pointer-events-auto">
+          <div className="flex w-full max-md:justify-center text-6xl gap-2 pointer-events-auto">
             <IconLink url={links.github}>
               <FaGithub />
             </IconLink>
@@ -161,7 +161,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-1/3 h-fit justify-between self-center ml-auto mr-25 flex flex-col p-2 backdrop-blur-sm rounded-xl pointer-events-none">
+        <div className="w-1/3 h-fit justify-between min-md:ml-auto min-md:mr-25 max-md:w-2/3 max-md:mt-10 flex flex-col p-2 backdrop-blur-sm rounded-xl pointer-events-none">
           <Image
             src={"/me.png"}
             quality={100}
